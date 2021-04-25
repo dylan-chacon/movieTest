@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  View, Text, Dimensions, Alert, Platform, StyleSheet,
+  ScrollView, Text, Dimensions, Alert, StyleSheet, StatusBar,
 } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigation } from '@react-navigation/native';
@@ -28,10 +28,6 @@ const Login = () => {
   // useState
 
   const [validation, setValidation] = useState(false);
-  const [alert, setAlert] = useState({
-    show: false,
-    message: 'Hubo un error',
-  });
   const [input, setInput] = useState({
     email: '',
     password: '',
@@ -41,8 +37,8 @@ const Login = () => {
   // loginEaP
 
   const logInEaP = async (Email, Password, val) => {
-    if (Email.trim() === '' || Password.trim() === '') setAlert({ show: true, message: 'No pueden haber campos vacíos' });
-    if (val) setAlert({ show: true, message: 'Ingresaste información incorrecta en algún campo' });
+    if (Email.trim() === '' || Password.trim() === '') return;
+    if (val) return;
     if (error === false && Email.trim() !== '' && Password.trim() !== '') {
       await dispatch(loginEmailAndPassword(Email, Password));
     }
@@ -80,7 +76,7 @@ const Login = () => {
 
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: 'silver' }}>
-      <View style={styles.container}>
+      <ScrollView contentContainerStyle={styles.container}>
         <Icon
           name="movie-search"
           type="material-community"
@@ -119,30 +115,28 @@ const Login = () => {
           textStyle={styles.textButtons}
           onPress={() => logInEaP(email, password, validation)}
         />
-        {Platform.OS === 'android' && (
-          <SocialIcon
-            title="Iniciar con Google"
-            button
-            type="google"
-            style={styles.socialStyle}
-            fontStyle={styles.textButtons}
-            onPress={() => loginGoogle()}
-          />
-        )}
+        <SocialIcon
+          title="Iniciar con Google"
+          button
+          type="google"
+          style={styles.socialStyle}
+          fontStyle={styles.textButtons}
+          onPress={() => loginGoogle()}
+        />
         <Text
           style={styles.textLogin}
           onPress={() => navigate('Registry')}
         >
           ¿Aún no tienes cuenta?
         </Text>
-      </View>
+      </ScrollView>
     </SafeAreaView>
   );
 };
 
 const styles = StyleSheet.create({
   container: {
-    height,
+    height: height - StatusBar.currentHeight,
     width,
     alignItems: 'center',
     justifyContent: 'center',
