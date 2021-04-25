@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text, Dimensions, StyleSheet } from 'react-native';
+import {
+  View, Text, Dimensions, StyleSheet,
+} from 'react-native';
 import { Overlay, Button, Icon } from 'react-native-elements';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -21,29 +23,29 @@ const styles = StyleSheet.create({
   overlayView: {
     flex: 1,
     alignItems: 'center',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   overlayText: {
     fontSize: height * 0.03,
     textAlign: 'center',
-    color: '#00000090'
+    color: '#00000090',
   },
   overlayButton: {
     width: width * 0.3,
     borderRadius: 20,
     backgroundColor: '#205DD0',
-    margin: height * 0.03
-  }
+    margin: height * 0.03,
+  },
 });
 
-function AuthStack(){
-  return(
+function AuthStack() {
+  return (
     <Stack.Navigator headerMode="none" initialRouteName="Login">
-      <Stack.Screen name="Login" component={Login}/>  
-      <Stack.Screen name="Registry" component={Registry}/>
-      <Stack.Screen name="PrincipalFlow" component={PrincipalFlow}/>  
+      <Stack.Screen name="Login" component={Login} />
+      <Stack.Screen name="Registry" component={Registry} />
+      <Stack.Screen name="PrincipalFlow" component={PrincipalFlow} />
     </Stack.Navigator>
-  )
+  );
 }
 function LoggedStack() {
   return (
@@ -53,10 +55,10 @@ function LoggedStack() {
   );
 }
 const AppInitialNavigation = () => {
-  //state
+  // state
   const [logged, setLogged] = useState(false);
   const [verified, setVerified] = useState(false);
-  //authChecker
+  // authChecker
   useEffect(() => {
     const authState = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -75,13 +77,13 @@ const AppInitialNavigation = () => {
     });
     authState();
   }, []);
-  //EmailVerification
+  // EmailVerification
   const EmailVerification = () => (
     <Overlay
-        isVisible
-        windowBackgroundColor="rgba(0,0,0,.5)"
-        overlayBackgroundColor="transparent"
-        overlayStyle={styles.overlayStyle}
+      isVisible
+      windowBackgroundColor="rgba(0,0,0,.5)"
+      overlayBackgroundColor="transparent"
+      overlayStyle={styles.overlayStyle}
     >
       <View style={styles.overlayView}>
         <Icon name="email" type="material-community" size={width * 0.35} color="#205DD0" />
@@ -95,16 +97,17 @@ const AppInitialNavigation = () => {
         />
       </View>
     </Overlay>
-  )
+  );
   return (
-    <NavigationContainer >
+    <NavigationContainer>
       <Stack.Navigator headerMode="none">
-        {(logged === true && verified === false) && <Stack.Screen name="VerificationEmail" component={EmailVerification} />}
+        {/* {(logged === true && verified === false) && <Stack.Screen name="VerificationEmail" component={EmailVerification} />}
         {(logged === false && verified === false) ? (<Stack.Screen name="Auth" component={AuthStack} />)
-          : (<Stack.Screen name={"logged"} component={LoggedStack} />)}
+          : (<Stack.Screen name="logged" component={LoggedStack} />)} */}
+        <Stack.Screen name="Auth" component={AuthStack} />
       </Stack.Navigator>
     </NavigationContainer>
   );
-}
-    
+};
+
 export default AppInitialNavigation;

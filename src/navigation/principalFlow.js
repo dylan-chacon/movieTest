@@ -15,7 +15,7 @@ const PrincipalFlow = () => (
           return <Icon name="movie" type="material-community" color={iconColor} size={size} />;
         }
         if (route.name === 'Perfil') {
-          return <Icon name="hote" type="font-awesome-5" color={iconColor} size={size} />;
+          return <Icon name="hotel" type="font-awesome-5" color={iconColor} size={size} />;
         }
         return (
           <Icon name="home" type="material-community" color={iconColor} size={size} />

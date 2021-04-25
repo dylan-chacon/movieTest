@@ -6552,7 +6552,7 @@ react-native-ratings@^7.3.0:
     lodash "^4.17.15"
     prop-types "^15.7.2"
 
-react-native-safe-area-context@3.2.0:
+react-native-safe-area-context@3.2.0, react-native-safe-area-context@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.2.0.tgz#06113c6b208f982d68ab5c3cebd199ca93db6941"
   integrity sha512-k2Nty4PwSnrg9HwrYeeE+EYqViYJoOFwEy9LxL5RIRfoqxAq/uQXNGwpUg2/u4gnKpBbEPa9eRh15KKMe/VHkA==
@@ -7743,6 +7743,11 @@ validate-npm-package-license@^3.0.1:
   dependencies:
     spdx-correct "^3.0.0"
     spdx-expression-parse "^3.0.0"
+
+validate.js@^0.13.1:
+  version "0.13.1"
+  resolved "https://registry.yarnpkg.com/validate.js/-/validate.js-0.13.1.tgz#b58bfac04a0f600a340f62e5227e70d95971e92a"
+  integrity sha512-PnFM3xiZ+kYmLyTiMgTYmU7ZHkjBZz2/+F0DaALc/uUtVzdCt1wAosvYJ5hFQi/hz8O4zb52FQhHZRC+uVkJ+g==
 
 vary@~1.1.2:
   version "1.1.2"
