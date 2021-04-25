@@ -101,7 +101,7 @@ const AppInitialNavigation = () => {
       <Stack.Navigator headerMode="none">
         {(logged === true && verified === false) && <Stack.Screen name="VerificationEmail" component={EmailVerification} />}
         {(logged === false && verified === false) ? (<Stack.Screen name="Auth" component={AuthStack} />)
-          : (<Stack.Screen name={i18n.t('principalFlow')} component={LoggedStack} />)}
+          : (<Stack.Screen name={"logged"} component={LoggedStack} />)}
       </Stack.Navigator>
     </NavigationContainer>
   );
