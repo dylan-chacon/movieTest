@@ -14,12 +14,12 @@ export const register = (email, password, name, userName) => async (dispatch) =>
         payload: { errorCode, errorMessage },
       });
     // ...
-    }).then(async ({ user }) => {
-      const { uid, photoURL } = await firebase.auth().currentUser;
+    }).then(async () => {
+      const { uid } = await firebase.auth().currentUser;
       const dbh = firebase.firestore();
       const usersCollection = dbh.collection('users');
-      await usersCollection.doc(user.uid).set({
-        name, userName, coverURL: '', description: '', uid, imageURL: photoURL,
+      await usersCollection.doc(uid).set({
+        name, userName, uid,
       })
         .catch((error) => {
           const errorCode = error.code;

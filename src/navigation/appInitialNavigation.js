@@ -56,9 +56,12 @@ function LoggedStack() {
 }
 const AppInitialNavigation = () => {
   // state
+
   const [logged, setLogged] = useState(false);
   const [verified, setVerified] = useState(false);
+
   // authChecker
+
   useEffect(() => {
     const authState = firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -77,7 +80,9 @@ const AppInitialNavigation = () => {
     });
     authState();
   }, []);
+
   // EmailVerification
+
   const EmailVerification = () => (
     <Overlay
       isVisible
@@ -98,13 +103,13 @@ const AppInitialNavigation = () => {
       </View>
     </Overlay>
   );
+
   return (
     <NavigationContainer>
       <Stack.Navigator headerMode="none">
-        {/* {(logged === true && verified === false) && <Stack.Screen name="VerificationEmail" component={EmailVerification} />}
+        {(logged === true && verified === false) && <Stack.Screen name="VerificationEmail" component={EmailVerification} />}
         {(logged === false && verified === false) ? (<Stack.Screen name="Auth" component={AuthStack} />)
-          : (<Stack.Screen name="logged" component={LoggedStack} />)} */}
-        <Stack.Screen name="Auth" component={AuthStack} />
+          : (<Stack.Screen name="logged" component={LoggedStack} />)}
       </Stack.Navigator>
     </NavigationContainer>
   );

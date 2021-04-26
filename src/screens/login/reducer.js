@@ -8,13 +8,13 @@ const STATE_INITIAL = {
 
 export default (state = STATE_INITIAL, action) => {
   switch (action.type) {
+    case Actions.LOGIN_CANCELLED:
     case Actions.LOGIN_ERROR:
       return {
         ...state,
         error: true,
         message: action.messageError,
       };
-    case Actions.LOGIN_CANCELED:
     case Actions.LOGIN_SUCCESS:
       return {
         ...state,

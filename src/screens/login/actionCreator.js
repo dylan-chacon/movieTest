@@ -46,7 +46,7 @@ export const loginWithCredential = (idToken) => async (dispatch) => {
     if (e.code === 'ERR_CANCELED') {
       // handle that the user canceled the sign-in flow
       return dispatch({
-        type: Actions.LOGIN_CANCELED,
+        type: Actions.LOGIN_CANCELLED,
         messageError: e.code,
       });
     }
